@@ -1,0 +1,59 @@
+- dipartimento
+    nome: VARCHAR ; NOT NULLABLE
+    direttore: VARCHAR(64) ; NOT NULLABLE   (Nome Cognome)
+    indirizzo: VARCHAR ; NOT NULLABLE
+    email_segreteria: VARCHAR(128) ; NOT NULLABLE ; UNIQUE
+    tel_segreteria: VARCHAR(32) ; NULLABLE 
+    budget: BIGINT ; NOT NULLABLE
+
+- corso di laurea
+    nome: VARCHAR ; NOT NULLABLE
+    durata: VARCHAR(64) ; NOT NULLABLE     (inteso come: "3 anni" o "triennale")
+    tot_cfu: SMALLINT ; NOT NULLABLE
+
+- corso
+    nome: VARCHAR(128) ; NOT NULLABLE 
+    cfu: TINYINT(128) ; NOT NULLABLE    (128 stando molto larghi)
+    data_inizio: DATE ; NOT NULLABLE
+    data_fine: DATE ; NOT NULLABLE
+    giorni_orari: VARCHAR ; NOT NULLABLE    (Martedì 09.30 - 13.00 / Giovedì 15.30 - 19)
+
+- insegnante
+    nome: VARCHAR(64) ; NOT NULLABLE
+    cognome: VARCHAR(64) ; NOT NULLABLE
+    genere: VARCHAR(16) ; NOT NULLABLE 
+    indirizzo: VARCHAR ; NOT NULLABLE
+    email: VARCHAR(128) ; NOT NULLABLE ; UNIQUE
+    n_tel: VARCHAR(32) ; NULLABLE 
+    data_nascita: DATE ; NOT NULLABLE
+    luogo_nascita: VARCHAR(64) ; NOT NULLABLE
+    c_fiscale: VARCHAR(64) ; NOT NULLABLE ; UNIQUE
+    cattedre: TEXT ; NOT NULLABLE     (es. Chimica, Fisica)
+    data_assunzione: DATE ; NOT NULLABLE
+    tipo_contratto: VARCHAR(64) ; NOT NULLABLE
+    salario: INT ; NOT NULLABLE 
+
+- appelli
+    corso: VARCHAR ; NOT NULLABLE
+    data: DATE ; NOT NULLABLE
+    tipo_esame: VARCHAR(64) ; NOT NULLABLE
+
+
+- studenti
+    nome: VARCHAR(64) ; NOT NULLABLE
+    cognome: VARCHAR(64) ; NOT NULLABLE
+    genere: VARCHAR(16) ; NOT NULLABLE 
+    indirizzo: VARCHAR ; NOT NULLABLE
+    email: VARCHAR(128) ; NOT NULLABLE ; UNIQUE
+    n_tel: VARCHAR(32) ; NULLABLE 
+    data_nascita: DATE ; NOT NULLABLE
+    luogo_nascita: VARCHAR(64) ; NOT NULLABLE
+    c_fiscale: VARCHAR(64) ; NOT NULLABLE ; UNIQUE
+    matricola: VARCHAR(16) ; NOT NULLABLE ; UNIQUE
+    cfu_acquisiti: SMALLINT ; NOT NULLABLE
+    cfu_mancanti: SMALLINT ; NOT NULLABLE
+
+- esito
+    votazione: TINYINT(110) ; NOT NULLABLE
+    lode: TINYINT(1) ; DEFAULT(0)
+    fuoricorso: TINYINT(1) ; DEFAULT(0)
